@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29009.5
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BattleshipStateTracker", "..\BattleshipStateTracker\BattleshipStateTracker.csproj", "{849D2B47-E09A-4058-9381-A52051982319}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BattleshipStateTracker.Tests", "..\BattleshipStateTracker.Tests\BattleshipStateTracker.Tests.csproj", "{44880265-E77E-4D26-84D2-03A59C94B587}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{849D2B47-E09A-4058-9381-A52051982319}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{849D2B47-E09A-4058-9381-A52051982319}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{849D2B47-E09A-4058-9381-A52051982319}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{849D2B47-E09A-4058-9381-A52051982319}.Release|Any CPU.Build.0 = Release|Any CPU
+		{44880265-E77E-4D26-84D2-03A59C94B587}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{44880265-E77E-4D26-84D2-03A59C94B587}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{44880265-E77E-4D26-84D2-03A59C94B587}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{44880265-E77E-4D26-84D2-03A59C94B587}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {999CAED0-2918-4040-A6DE-38DEADAFCE23}
+	EndGlobalSection
+EndGlobal
