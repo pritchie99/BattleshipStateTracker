@@ -39,10 +39,15 @@ namespace FlareHR.Tests
             Assert.IsFalse(tracker.RegisterShot("B2"), "Fired shot incorrectly deemed a hit");
         }
 
+        [TestMethod]
         public void CheckInvalidCoordinateString()
         {
             var tracker = new BattleshipStateTracker();
-            Assert.ThrowsException<System.Exception>(() => tracker.Init(ShipType.Cruiser, Alignment.Vertical, "B0"));
+            Assert.ThrowsException<System.Exception>(() => tracker.Init(ShipType.Cruiser, Alignment.Horizontal, "B11"));
+            Assert.ThrowsException<System.Exception>(() => tracker.Init(ShipType.Cruiser, Alignment.Horizontal, ""));
+            Assert.ThrowsException<System.Exception>(() => tracker.Init(ShipType.Cruiser, Alignment.Horizontal, "A-1"));
+            Assert.ThrowsException<System.Exception>(() => tracker.Init(ShipType.Cruiser, Alignment.Horizontal, "ABC"));
+            Assert.ThrowsException<System.Exception>(() => tracker.Init(ShipType.Cruiser, Alignment.Horizontal, "11"));
         }
     }
 }
