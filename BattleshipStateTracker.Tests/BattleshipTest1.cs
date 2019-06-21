@@ -20,23 +20,29 @@ namespace FlareHR.Tests
         {
             var tracker = new BattleshipStateTracker();
             tracker.Init(ShipType.Carrier, Alignment.Vertical, "B3");
-            Assert.ThrowsException<System.Exception>(() => tracker.Init(ShipType.Destroyer, Alignment.Horizontal, "A8"));
+            Assert.ThrowsException<System.Exception>(() => tracker.Init(ShipType.Destroyer, Alignment.Horizontal, "A7"));
         }
 
         [TestMethod]
-        public void CheckHitShot()
+        public void CheckHitShots()
         {
             var tracker = new BattleshipStateTracker();
             tracker.Init(ShipType.Cruiser, Alignment.Vertical, "B3");
-            Assert.IsTrue(tracker.RegisterShot("B4"), "Fired shot incorrectly deemed a miss");
+            Assert.IsTrue(tracker.RegisterShot("B3"), "Fired shot B3 incorrectly deemed a miss");
+            Assert.IsTrue(tracker.RegisterShot("B4"), "Fired shot B4 incorrectly deemed a miss");
+            Assert.IsTrue(tracker.RegisterShot("B5"), "Fired shot B5 incorrectly deemed a miss");
+
         }
 
         [TestMethod]
-        public void CheckMissShot()
+        public void CheckMissShots()
         {
             var tracker = new BattleshipStateTracker();
             tracker.Init(ShipType.Cruiser, Alignment.Vertical, "B3");
-            Assert.IsFalse(tracker.RegisterShot("B2"), "Fired shot incorrectly deemed a hit");
+            Assert.IsFalse(tracker.RegisterShot("B2"), "Fired shot B2 incorrectly deemed a hit");
+            Assert.IsFalse(tracker.RegisterShot("B6"), "Fired shot B6 incorrectly deemed a hit");
+            Assert.IsFalse(tracker.RegisterShot("A3"), "Fired shot A3 incorrectly deemed a hit");
+            Assert.IsFalse(tracker.RegisterShot("C3"), "Fired shot C3 incorrectly deemed a hit");
         }
 
         [TestMethod]

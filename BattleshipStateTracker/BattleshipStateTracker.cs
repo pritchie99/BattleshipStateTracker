@@ -6,7 +6,7 @@ using System.Text.RegularExpressions;
 namespace FlareHR
 {
     public enum Alignment {Vertical, Horizontal};
-    public enum ShipType { None = 0, Destroyer = 2, Submarine, Cruiser, Battleship, Carrier};
+    public enum ShipType { None = 0, Destroyer = 2, Submarine = 3, Cruiser = 3, Battleship = 4, Carrier = 5};
 
     public class CellState
     {
@@ -33,20 +33,21 @@ namespace FlareHR
                 throw new Exception($"{ship.ToString()} has already been placed on the map.");
 
             SplitCoordinates(cellCoords, out int xCoord, out int yCoord);
-            PlaceShip(ship, direction, xCoord, yCoord, out int shipEndX, out int shipEndY);
+            PlaceShip(ship, direction, xCoord, yCoord);
             _ships.Add(ship);
         }
 
-        private void PlaceShip(ShipType ship, Alignment alignment, int shipStartX, int shipStartY, out int shipEndX, out int shipEndY)
+        private void PlaceShip(ShipType ship, Alignment alignment, int shipStartX, int shipStartY)
         {
-            if(alignment == Alignment.Vertical)
+            int shipEndX, shipEndY;
+            if (alignment == Alignment.Vertical)
             {
                 shipEndX = shipStartX;
-                shipEndY = shipStartY + (int)ship;
+                shipEndY = shipStartY + (int)ship - 1;
             }
             else
             {
-                shipEndX = shipStartX + (int)ship;
+                shipEndX = shipStartX + (int)ship - 1;
                 shipEndY = shipStartY;
             }
             if (!_coordRange.Contains(shipStartX) || 
@@ -57,7 +58,7 @@ namespace FlareHR
                 throw new Exception("Attempting to place part of ship outside the map.");
             }
 
-            for(int x = shipStartX; x <= shipEndY; x++)
+            for(int x = shipStartX; x <= shipEndX; x++)
             {
                 for (int y = shipStartY; y <= shipEndY; y++)
                 {
@@ -67,7 +68,7 @@ namespace FlareHR
                     }
                 }
             }
-            for (int x = shipStartX; x <= shipEndY; x++)
+            for (int x = shipStartX; x <= shipEndX; x++)
             {
                 for (int y = shipStartY; y <= shipEndY; y++)
                 {
