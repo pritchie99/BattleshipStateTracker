@@ -55,5 +55,30 @@ namespace FlareHR.Tests
             Assert.ThrowsException<System.Exception>(() => tracker.Init(ShipType.Cruiser, Alignment.Horizontal, "ABC"));
             Assert.ThrowsException<System.Exception>(() => tracker.Init(ShipType.Cruiser, Alignment.Horizontal, "11"));
         }
+
+        [TestMethod]
+        public void CheckAllShipsSunk()
+        {
+            var tracker = new BattleshipStateTracker();
+            tracker.Init(ShipType.Cruiser, Alignment.Vertical, "B3");
+            tracker.Init(ShipType.Carrier, Alignment.Horizontal, "E8");
+
+            Assert.IsTrue(tracker.RegisterShot("B3"), "Fired shot B3 incorrectly deemed a miss");
+            Assert.IsTrue(tracker.RegisterShot("B4"), "Fired shot B4 incorrectly deemed a miss");
+            Assert.IsTrue(tracker.RegisterShot("B5"), "Fired shot B5 incorrectly deemed a miss");
+            Assert.IsTrue(tracker.RegisterShot("E8"), "Fired shot E8 incorrectly deemed a miss");
+            Assert.IsTrue(tracker.RegisterShot("F8"), "Fired shot F8 incorrectly deemed a miss");
+            Assert.IsTrue(tracker.RegisterShot("G8"), "Fired shot G8 incorrectly deemed a miss");
+            Assert.IsTrue(tracker.RegisterShot("H8"), "Fired shot H8 incorrectly deemed a miss");
+
+            Assert.IsFalse(tracker.AllShipsSunk(), "All Ships Sunk incorrectly deemed true before last shot taken");
+
+            Assert.IsTrue(tracker.RegisterShot("I8"), "Fired shot I8 incorrectly deemed a miss");
+
+            Assert.IsTrue(tracker.AllShipsSunk(), "All Ships Sunk incorrectly deemed false");
+        }
+
+
+
     }
 }

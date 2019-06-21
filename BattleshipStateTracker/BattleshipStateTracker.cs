@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text.RegularExpressions;
 
@@ -123,6 +124,22 @@ namespace FlareHR
             {
                 throw new Exception("Invalid Cell coordinate string.  Cell Coordinates must be specified as a 2-3 character string starting with A-J followed by a number 1-10 eg 'B9'");
             }
+        }
+
+        public bool AllShipsSunk()
+        {
+            foreach(var cell in _map)
+            {
+                if(cell != null)
+                {
+                    Debug.WriteLine($"{cell.Ship.ToString(),-10}{cell.WasFiredAt}");
+                    if (cell.Ship != ShipType.None && cell.WasFiredAt == false)
+                    {
+                        return false;
+                    }
+                }
+            }
+            return true;
         }
 
         private string CoordinatesAsString(int xCoord, int yCoord)
