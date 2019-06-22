@@ -1,6 +1,5 @@
 # BattleshipStateTracker 
 A Battleship State Tracker demo application with tests
-======================================================
 
 ## Overview
 
