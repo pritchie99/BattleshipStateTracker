@@ -1,6 +1,4 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using FlareHR;
-
 
 namespace FlareHR.Tests
 {
