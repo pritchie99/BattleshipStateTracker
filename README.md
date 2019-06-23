@@ -32,7 +32,7 @@ This implementation includes a number of features to support the requested attri
 * All public methods in the tracker class raise exceptions which make tests to check for error conditions easier to write.
 * Public/internal methods and their parameters are named so that their intended function is clear, eg AddShip(ship, alignment, cellCoordinates).
 
-**Extensibility**
+**Extensibility**  
 The tracker has been designed with the ability to extend in mind, and a number of options exist.  How this is implemented will depend on the requirement at the time.  Some potential options are:-
 * Interface: where the tracker may need to implement multiple behaviours, and those behaviours are used in multiple unrelated classes.
 * Abstract/Super/Sub class: Often utilised when the extended behaviours are introduced or extended in a hierachical fashion between related classes.
